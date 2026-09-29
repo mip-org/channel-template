@@ -1,8 +1,4 @@
-# mip-hello
-
-Example MIP package channel — a small, readable reference for the package layouts a channel can hold: in-channel source (`hello_inline`), a git-sourced package whose `mip.yaml` lives upstream (`hello_mip`), a native MEX package (`hello_mip_mex`), and a numbl/WASM package (`hello_mip_wasm`).
-
-A MIP package channel. Builds run one (package, architecture) at a time. They are triggered automatically on push to `main`, daily via a scheduled probe, or manually via a GitHub issue.
+A mip package channel. Builds run one (package, architecture) at a time. They are triggered automatically on push to `main`, daily via a scheduled probe, or manually via a GitHub issue.
 
 ## Auto-build on push
 
