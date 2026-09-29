@@ -2,7 +2,7 @@
 
 Template for a [mip](https://mip.sh) package channel. A channel is a GitHub repo that builds MATLAB packages on GitHub Actions, publishes each build as a GitHub Release asset, and serves a package index from GitHub Pages. The build pipeline itself lives in [mip-org/mip_channel_tools](https://github.com/mip-org/mip_channel_tools); the workflows in this repo are thin callers, so you never write or maintain build scripts yourself.
 
-The example packages show the layouts a channel can hold: in-channel source (`hello_inline`), a git-sourced package whose `mip.yaml` lives upstream (`hello_mip`), a native MEX package (`hello_mip_mex`), and a numbl/WASM package (`hello_mip_wasm`). They are the same packages as in [mip-org/mip-hello](https://github.com/mip-org/mip-hello).
+The `packages/` directory starts empty. For worked examples of the package layouts a channel can hold (in-channel source, a git-sourced package, a native MEX package, and a numbl/WASM package), see [mip-org/mip-hello](https://github.com/mip-org/mip-hello).
 
 ## Creating your channel
 
@@ -10,7 +10,7 @@ The example packages show the layouts a channel can hold: in-channel source (`he
    - The `mip-` prefix is required. Users install with `mip install --channel <owner>/mylab ...`, and mip looks for the index at the GitHub Pages site of `<owner>/mip-mylab`. A repo without the prefix cannot be reached as a channel.
    - The repo must be public: MATLAB on GitHub's CI runners is licensed only for public repos, and users download packages anonymously.
 2. In the new repo, go to **Settings → Pages** and set the source to **GitHub Actions**.
-3. Replace the example packages under `packages/` with your own (see [Adding a package](#adding-a-package)), or keep one or two while you get started. Then commit and push to `main`. Each package you add or change is built automatically.
+3. Add your packages under `packages/` (see [Adding a package](#adding-a-package)), then commit and push to `main`. Each package you add or change is built automatically.
 4. Rewrite this README to describe your channel.
 
 Keep `.github/workflows/`, `.gitattributes`, and `.gitignore` as they are; they connect the channel to the build engine.
@@ -43,7 +43,7 @@ source:
   branch: "main"
 ```
 
-If the source repo has no `mip.yaml`, or you want to override it, put one next to `source.yaml`. For very small packages, the source can live directly in the channel with an empty `source.yaml` (see `hello_inline`). Package names use underscores, not hyphens. For the full set of `source.yaml` options and many real examples, see the [packages in mip-core](https://github.com/mip-org/mip-core/tree/main/packages).
+If the source repo has no `mip.yaml`, or you want to override it, put one next to `source.yaml`. For very small packages, the source can live directly in the channel with an empty `source.yaml` (see [hello_inline](https://github.com/mip-org/mip-hello/tree/main/packages/hello_inline) in mip-hello). Package names use underscores, not hyphens. For the full set of `source.yaml` options and many real examples, see the [packages in mip-core](https://github.com/mip-org/mip-core/tree/main/packages).
 
 ## How builds run
 
